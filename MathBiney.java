@@ -1,18 +1,21 @@
 public class MathBiney {
-    Object mathThing;
-    MathBiney leftChild;
-    MathBiney rightChild;
+    private Object mathThing;
+    private MathBiney leftChild;
+    private MathBiney rightChild;
+    private MathBiney parent;
 
-    public MathBiney(Double operand) {
+    public MathBiney(Double operand, MathBiney parent) {
         mathThing = operand;
         leftChild = null;
         rightChild = null;
+        this.parent = parent;
     }
 
-    public MathBiney(String operator) {
+    public MathBiney(String operator, MathBiney parent) {
         mathThing = operator;
         leftChild = null;
         rightChild = null;
+        this.parent = parent;
     }
 
     public void setLeft(MathBiney child) {
@@ -31,6 +34,9 @@ public class MathBiney {
         return leftChild;
     }
   
+    public MathBiney getParent() {
+        return parent;
+    }
 
     public Double solveTree() {
         if (mathThing.getClass() == Double.class) {

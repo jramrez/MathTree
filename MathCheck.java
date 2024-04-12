@@ -17,4 +17,15 @@ public class MathCheck {
                 return -1;
         }
     }
+
+    public static boolean ifOperator(String s) {
+        String[] oparray = {"+","-","*","/","%"};
+
+        for (String p : oparray) {
+            if (s.equals(p)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
