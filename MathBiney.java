@@ -26,6 +26,10 @@ public class MathBiney {
         rightChild = child;
     }
 
+    public Object getValue() {
+        return mathThing;
+    }
+
     public MathBiney getRight() {
         return rightChild;
     }

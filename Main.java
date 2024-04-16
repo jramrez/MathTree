@@ -11,9 +11,9 @@ public class Main {
         MathBiney root;
         MathBiney current;
         Scanner scan = new Scanner(System.in);
-        StringBuilder reverser = new StringBuilder();
+        StringBuilder reverser = new StringBuilder(); //declaring a few variables
         
-        
+         // scanner starts here
         System.out.println("Enter a postfix expression to solve using a binary tree:");
         String input = scan.nextLine();
         reverser.append(input);
@@ -21,7 +21,7 @@ public class Main {
         input = reverser.toString();
         scan.close();
 
-
+        // scanner is closed and reopened to scan what was inputted 
         scan = new Scanner(input);
         String currentSubString = "";
         scan.useDelimiter(" ");
@@ -30,12 +30,27 @@ public class Main {
         while(scan.hasNext()) {
             currentSubString = scan.next();
             if (MathCheck.ifOperator(currentSubString)) {
-                if (current.getRight() == null) {
-                    current.setRight(new MathBiney(currentSubString, root));
+                if (MathCheck.ifOperator((String)current.getValue())) {
+                    if (current.getLeft() == null) {
+                        current.setLeft(new MathBiney(currentSubString, current));
+                    }
+                    else {
+                        current.setRight(new MathBiney(currentSubString, current));
+                    }
+                }
+                else {
+
                 }
             }
             else {
-
+                if (MathCheck.ifOperator((String)current.getValue())) {
+                    if (current.getLeft() == null) {
+                        current.setLeft(new MathBiney(Double.parseDouble(currentSubString), current));
+                    }
+                    else {
+                        current.setRight(new MathBiney(Double.parseDouble(currentSubString), current));
+                    }
+                }
             }
         }
 
@@ -43,6 +58,6 @@ public class Main {
 
         
         scan.close();
-        root.solveTree();
+        System.out.println(root.solveTree());
     }
 }
